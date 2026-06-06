@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja" data-page="admin">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理画面 — 調整くん</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">📅</span>
+      調整くん
+    </a>
+    <div class="header-actions">
+      <button class="theme-btn" id="theme-toggle" title="テーマ切替">🌙</button>
+    </div>
+  </header>
+
+  <!-- Admin content injected by JS -->
+  <div id="admin-main">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>読み込み中…</p>
+    </div>
+  </div>
+
+</div><!-- /.page-wrapper -->
+
+<div class="toast-container"></div>
+
+<!-- Firebase -->
+<script src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
