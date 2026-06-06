@@ -22,17 +22,15 @@
     </div>
   </header>
 
-  <!-- ========== CREATE VIEW ========== -->
+  <!-- ========== CREATE VIEW (トークンなし時のみ表示) ========== -->
   <div id="create-section">
 
-    <!-- Hero (shown only on create page, not participant) -->
     <div class="hero" id="hero-section">
       <div class="hero-badge">✨ 無料・登録不要</div>
       <h1>かんたん<br><span>日程調整</span></h1>
       <p>イベントを作成して、参加者にURLを共有するだけ。候補日から参加可否を集めましょう。</p>
     </div>
 
-    <!-- Create form -->
     <div class="card" id="create-form-card">
       <div class="card-title"><span class="icon">✏️</span>イベントを作成</div>
       <form id="create-form">
@@ -56,6 +54,29 @@
           <label for="event-deadline">回答締切（任意）</label>
           <input type="date" id="event-deadline">
         </div>
+
+        <!-- 追加設定 -->
+        <div class="section-divider">追加設定</div>
+
+        <div class="form-group">
+          <label for="event-max-resp">回答上限数（任意）</label>
+          <input type="number" id="event-max-resp" placeholder="例: 10（空欄=無制限）" min="1" max="999">
+          <p class="hint-text">上限に達すると自動的に回答を締め切ります</p>
+        </div>
+
+        <div class="form-group">
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">他の回答者の状況を表示</div>
+              <div class="toggle-desc">参加者が他の人の回答を見られるようにする</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="show-others" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
         <div class="mt-20">
           <button type="submit" class="btn btn-primary btn-block btn-lg" id="create-btn">
             イベントを作成する →
@@ -114,7 +135,6 @@
 
 <div class="toast-container"></div>
 
-<!-- Firebase -->
 <script src="firebase-config.js"></script>
 <script type="module" src="app.js"></script>
 </body>
