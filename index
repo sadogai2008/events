@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja" data-page="index">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>調整くん — かんたん日程調整</title>
+  <meta name="description" content="かんたんに日程調整できる無料ツール">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">📅</span>
+      調整くん
+    </a>
+    <div class="header-actions">
+      <button class="theme-btn" id="theme-toggle" title="テーマ切替">🌙</button>
+    </div>
+  </header>
+
+  <!-- ========== CREATE VIEW ========== -->
+  <div id="create-section">
+
+    <!-- Hero (shown only on create page, not participant) -->
+    <div class="hero" id="hero-section">
+      <div class="hero-badge">✨ 無料・登録不要</div>
+      <h1>かんたん<br><span>日程調整</span></h1>
+      <p>イベントを作成して、参加者にURLを共有するだけ。候補日から参加可否を集めましょう。</p>
+    </div>
+
+    <!-- Create form -->
+    <div class="card" id="create-form-card">
+      <div class="card-title"><span class="icon">✏️</span>イベントを作成</div>
+      <form id="create-form">
+        <div class="form-group">
+          <label class="required" for="event-title">イベント名</label>
+          <input type="text" id="event-title" placeholder="例: 6月の飲み会" maxlength="100" required>
+        </div>
+        <div class="form-group">
+          <label for="event-desc">説明（任意）</label>
+          <textarea id="event-desc" placeholder="例: 渋谷駅近辺で予定しています"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="required">候補日</label>
+          <div id="date-list"></div>
+          <div class="add-date-row">
+            <input type="date" id="date-input">
+            <button type="button" class="btn btn-secondary" id="add-date-btn">＋ 追加</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="event-deadline">回答締切（任意）</label>
+          <input type="date" id="event-deadline">
+        </div>
+        <div class="mt-20">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="create-btn">
+            イベントを作成する →
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div><!-- /#create-section -->
+
+  <!-- ========== SUCCESS VIEW ========== -->
+  <div id="success-section" class="hidden">
+
+    <div class="card">
+      <div class="success-screen">
+        <div class="success-icon">🎉</div>
+        <h2>イベントを作成しました！</h2>
+        <p>以下のURLを参加者に共有してください。</p>
+      </div>
+
+      <div class="section-divider">参加者URL</div>
+      <div class="url-box">
+        <span class="url-text" id="public-url-text"></span>
+        <button class="copy-btn" id="copy-public-btn">コピー</button>
+      </div>
+
+      <div class="section-divider">管理者URL（大切に保管してください）</div>
+      <div class="url-box">
+        <span class="url-text" id="admin-url-text"></span>
+        <button class="copy-btn" id="copy-admin-btn">コピー</button>
+      </div>
+      <p class="text-muted mt-8" style="font-size:.78rem">⚠️ 管理者URLを知っている人はイベントを編集・削除できます</p>
+    </div>
+
+    <!-- QR -->
+    <div class="card mt-20">
+      <div class="card-title"><span class="icon">📱</span>参加者URL の QRコード</div>
+      <div class="qr-wrap">
+        <div id="qr-container"></div>
+      </div>
+      <div class="text-center mt-12">
+        <button class="btn btn-secondary" id="download-qr-btn">⬇️ QRをPNGで保存</button>
+      </div>
+    </div>
+
+    <div class="text-center mt-20">
+      <a href="index.html" class="btn btn-secondary">← 新しいイベントを作成</a>
+    </div>
+
+  </div><!-- /#success-section -->
+
+  <!-- ========== PARTICIPANT VIEW ========== -->
+  <div id="main-content"></div>
+
+</div><!-- /.page-wrapper -->
+
+<div class="toast-container"></div>
+
+<!-- Firebase -->
+<script src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
